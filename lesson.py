@@ -1,4 +1,6 @@
 # -*- encoding=UTF-8 -*-
+from operator import add, sub
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -98,7 +100,28 @@ def demo_list():
     listb.sort(reverse=True)
     print 12, listb
     print 13, listb * 2
+    print 14, [0]*14  #memset(src, 0, len)
 
+    tuplea = (1, 2, 3)
+    listaa = [1, 2, 3]
+    listaa.append(4)
+    print 15, listaa  #tuple没有 只读 不能添加
+
+def demo_dict():
+    dicta = {1: 1, 2: 4, 3: 9}
+    print 1, dicta
+    print 2, dicta.keys(), dicta.values()
+    print 3, dicta.has_key(1), dicta.has_key(3)
+    # for map<int, int>::iteraator it = x.begin(); it != x.end()
+    for key, value in dicta.items():
+        print 'key-value', key, value
+    dictb = {'+': add, '-': sub}
+    print 4, dictb['+'](1, 2)
+    print 5, dictb['-'](15, 3)
+    dictb['*'] = 'x'
+    print 6, dictb
+    dicta.pop(4)
+    print 7, dicta
 
 if __name__ == '__main__':
     print('hello world')
@@ -106,4 +129,5 @@ if __name__ == '__main__':
     # demo_operation()
     # demo_buildinfunction()
     # demo_controlflow()
-    demo_list()
+    # demo_list()
+    demo_dict()
